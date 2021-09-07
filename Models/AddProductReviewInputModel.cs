@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DevReview.API.Models
+﻿namespace DevReview.API.Models
 {
     public class AddProductReviewInputModel
     {

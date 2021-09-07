@@ -24,6 +24,7 @@ namespace DevReview.API.Models
         public decimal Price { get; private set; }
 
         public DateTime RegisteredAt { get; private set; }
+        
         public List<ProductReviewViewmModel> Reviews { get; private set; }
     }
 

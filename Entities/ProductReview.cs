@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DevReview.API.Entities
 {
@@ -24,9 +21,9 @@ namespace DevReview.API.Entities
 
         public string Comments { get; private set; }
 
-        public int ProductId { get; private set; }
-
         public DateTime RegisteredAt { get; private set; }
+
+        public int ProductId { get; private set; }
 
     }
 }

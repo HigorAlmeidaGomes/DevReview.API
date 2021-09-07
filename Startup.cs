@@ -1,18 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DevReview.API.Persistence;
+using DevReview.API.Persistence.Repository;
 using DevReview.API.Profiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System.Data.SqlClient;
 
 namespace DevReview.API
 {
@@ -30,10 +26,14 @@ namespace DevReview.API
         {
             // transient, scoped, Singleton
 
-            // Singleton: Eh utilizado para todo o ciclo da aplicação. 
+            // Singleton: Eh utilizado para todo o ciclo da aplicaï¿½ï¿½o. 
             // Scoped
 
-            services.AddSingleton<DevReviewsDbContext>();
+            var conncetionString = Configuration.GetValue<string>("DevReviewCs");
+
+            services.AddDbContext<DevReviewsDbContext>(x => x.UseSqlServer(conncetionString));
+
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddAutoMapper(typeof(ProductProfile));
 
